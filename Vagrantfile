@@ -29,7 +29,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # Bridged networking
     machine.vm.network :public_network
 
-    config.vm.network "forwarded_port", guest: 35729, host: 35729
+    params[:forwarded_port].each do |port|
+      config.vm.network "forwarded_port", guest: port[:guest], host: port[:host]
+    end
 
     # Set machine hostname
     machine.vm.hostname = params[:name]

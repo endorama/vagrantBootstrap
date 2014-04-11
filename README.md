@@ -11,12 +11,4 @@ Currently supported machines:
 To install a setup install the gem `json` ( `gem install json` ).
 
 Then create a vagrant.json in the folder in which you want your create the machine
-using this template:
-
-```json
-{
-  "name": "default",
-  "cpu": 1,
-  "ram": 512
-}
-```
+using the template available at [vagrant.tpl.json](vagrant.tpl.json)

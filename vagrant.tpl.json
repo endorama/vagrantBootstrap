@@ -1,0 +1,13 @@
+{
+  "name": "test",
+  "cpu": 1,
+  "ram": 512,
+  "box": "debian-7.4",
+  "box_url": "https://vagrantcloud.com/chef/debian-7.4/version/1/provider/virtualbox.box",
+  "forwarded_port": [
+    { "name": "livereload", "guest": 35729, "host": 35729 }
+  ],
+  "virtualbox": {
+    "gui": false
+  }
+}

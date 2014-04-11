@@ -17,11 +17,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # see http://stackoverflow.com/a/20431791/715002
   config.vm.define params[:name] do |machine|
     # Every Vagrant virtual environment requires a box to build off of.
-    machine.vm.box = "debian-7.4"
+    machine.vm.box = params[:box]
 
     # The url from where the 'config.vm.box' box will be fetched if it
     # doesn't already exist on the user's system.
-    machine.vm.box_url = "https://vagrantcloud.com/chef/debian-7.4/version/1/provider/virtualbox.box"
+    machine.vm.box_url = params[:box_url]
 
     # Tell vagrant to run boostrap.sh in shell when provisioning
     machine.vm.provision :shell, :path => ".vagrant/bootstrap.sh"

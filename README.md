@@ -10,5 +10,12 @@ Currently supported machines:
 
 To install a setup install the gem `json` ( `gem install json` ).
 
-Then create a vagrant.json in the folder in which you want your create the machine
-using the template available at [vagrant.tpl.json](vagrant.tpl.json)
+Now simply run the `install.sh` script in the desired folder; will copy the
+Vagrantfile, vagrant.json ( copy of vagrant.tpl.json ) and .vagrant folder.
+
+```
+$ wget https://raw.githubusercontent.com/endorama/vagrantBootstrap/laravel/install.sh | bash -s
+
+Edit the vagrant.json file and run `vagrant up` when ready.
+
+Enjoy!

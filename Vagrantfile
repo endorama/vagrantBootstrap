@@ -1,10 +1,14 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-VAGRANT_NAME = 'laraveltest'
+require 'json'
 
-VIRTUALBOX_CPU = '1'
-VIRTUALBOX_RAM = '512'
+# Read configuration from a vagrant.json file
+config = JSON.parse(IO.read('vagrant.json'))
+
+VAGRANT_NAME = config['name']
+VIRTUALBOX_CPU = config['cpu']
+VIRTUALBOX_RAM = config['ram']
 
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"

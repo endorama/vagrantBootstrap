@@ -1,5 +1,5 @@
 {
-  "name": "test",
+  "name": "laravel",
   "cpu": 1,
   "ram": 512,
   "box": "debian-7.4",

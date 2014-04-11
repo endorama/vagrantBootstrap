@@ -4,11 +4,7 @@
 require 'json'
 
 # Read configuration from a vagrant.json file
-config = JSON.parse(IO.read('vagrant.json'))
-
-VAGRANT_NAME = config['name']
-VIRTUALBOX_CPU = config['cpu']
-VIRTUALBOX_RAM = config['ram']
+params = JSON.parse(IO.read('vagrant.json'), symbolize_names: true)
 
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
@@ -19,7 +15,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # please see the online documentation at vagrantup.com.
 
   # see http://stackoverflow.com/a/20431791/715002
-  config.vm.define VAGRANT_NAME do |machine|
+  config.vm.define params[:name] do |machine|
     # Every Vagrant virtual environment requires a box to build off of.
     machine.vm.box = "debian-7.4"
 
@@ -36,7 +32,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.network "forwarded_port", guest: 35729, host: 35729
 
     # Set machine hostname
-    machine.vm.hostname = VAGRANT_NAME
+    machine.vm.hostname = params[:name]
 
     # If true, then any SSH connections made will enable agent forwarding.
     # Default value: false
@@ -56,14 +52,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
   config.vm.provider :virtualbox do |vb|
-    vb.name = VAGRANT_NAME
+    vb.name = params[:name]
 
     # Don't boot with headless mode
     # vb.gui = true
 
     # Use VBoxManage to customize the VM. For example to change memory:
-    vb.customize ["modifyvm", :id, "--memory", VIRTUALBOX_RAM]
-    vb.customize ["modifyvm", :id, "--cpus", VIRTUALBOX_CPU]
+    vb.customize ["modifyvm", :id, "--memory", params[:ram]]
+    vb.customize ["modifyvm", :id, "--cpus", params[:cpu]]
   end
 
 end

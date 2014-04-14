@@ -1,7 +1,7 @@
 # Copyright 2014 - Edoardo Tenani
 # MIT License
 
-source apt.sh
+source /vagrant/.vagrant/libs/apt.sh
 
 function installPhp5() {
   aptgetinstall php5

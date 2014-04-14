@@ -1,7 +1,7 @@
 # Copyright 2014 - Edoardo Tenani
 # MIT License
 
-source apt.sh
+source /vagrant/.vagrant/libs/apt.sh
 
 function _restartApache() {
   /etc/init.d/apache2 restart

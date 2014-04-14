@@ -8,7 +8,7 @@ function setPermissions() {
 function copyAll() {
   for file in $(ls /vagrant/.vagrant/files); do
     echo "Copying $file"
-    cp $file /
+    cp cp -r /vagrant/.vagrant/files/$file /
   done
 
   setPermissions

@@ -1,10 +1,16 @@
 # Copyright 2014 - Edoardo Tenani
 # MIT License
 
-function copy_all() {
-  for file in $(ls files); do
+function setPermissions() {
+}
+
+function copyAll() {
+  for file in $(ls /vagrant/.vagrant/files); do
+    echo "Copying $file"
     cp $file /
   done
+
+  setPermissions
 }
 
 function copy() {

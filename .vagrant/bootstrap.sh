@@ -11,6 +11,7 @@ source $vagrant_root/libs/php.sh
 
 aptgetupdate
 aptgetinstall git
+copyAll
 
 # apache
 installApache

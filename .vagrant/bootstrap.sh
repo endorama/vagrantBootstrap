@@ -26,6 +26,7 @@ installComposer
 # mysql
 configureMysql
 installMysql
+createDatabase
 
 # nodejs
 installNodeJs

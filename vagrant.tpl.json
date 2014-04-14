@@ -9,5 +9,12 @@
   ],
   "virtualbox": {
     "gui": false
+  },
+  "provision": {
+    "database": {
+      "username": "root",
+      "password": "root",
+      "name": "laravel"
+    }
   }
 }

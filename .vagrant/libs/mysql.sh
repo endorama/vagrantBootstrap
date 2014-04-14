@@ -11,3 +11,11 @@ function configureMysql() {
 function installMysql() {
   aptgetinstall mysql-server
 }
+
+function createDatabase() {
+  local username=$(jq ".provision.database.username" /vagrant/vagrant.json)
+  local password=$(jq ".provision.database.password" /vagrant/vagrant.json)
+  local name=$(jq ".provision.database.name" /vagrant/vagrant.json)
+
+  mysql -u $username -p$password -e "create database $name;"
+}

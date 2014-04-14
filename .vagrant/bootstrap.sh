@@ -11,7 +11,10 @@ source $vagrant_root/libs/php.sh
 
 aptgetupdate
 aptgetinstall git
-copyAll
+
+# copy jq executable
+copy 'usr/local/bin/jq'
+chmod +x '/usr/local/bin/jq'
 
 # apache
 installApache

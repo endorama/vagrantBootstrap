@@ -23,6 +23,7 @@ installPhp5Mysql
 installComposer
 
 # mysql
+configureMysql
 installMysql
 
 # nodejs

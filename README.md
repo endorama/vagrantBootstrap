@@ -20,3 +20,7 @@ $ curl -sSL https://raw.githubusercontent.com/endorama/vagrantBootstrap/laravel/
 Edit the vagrant.json file and run `vagrant up` when ready.
 
 Enjoy!
+
+# Json parse from bash
+
+Thanks to [`jq`](http://stedolan.github.io/jq/) is possible to parse JSON from the bash bootstrap file ( example in libs/mysql.sh). View `jq` docs for more informations.

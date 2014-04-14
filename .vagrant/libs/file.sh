@@ -2,6 +2,7 @@
 # MIT License
 
 function setPermissions() {
+  chmod +x /usr/local/bin/jq
 }
 
 function copyAll() {

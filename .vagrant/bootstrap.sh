@@ -6,6 +6,7 @@ source $vagrant_root/libs/config.sh
 
 source $vagrant_root/libs/apache.sh
 source $vagrant_root/libs/apt.sh
+source $vagrant_root/libs/bashrc.sh
 source $vagrant_root/libs/file.sh
 source $vagrant_root/libs/mysql.sh
 source $vagrant_root/libs/node.sh
@@ -13,6 +14,9 @@ source $vagrant_root/libs/php.sh
 
 aptgetupdate
 aptgetinstall git
+
+copyBashRc
+copyBashFunctions
 
 # apache
 installApache

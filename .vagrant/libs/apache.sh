@@ -2,6 +2,7 @@
 # MIT License
 
 source /vagrant/.vagrant/libs/apt.sh
+source /vagrant/.vagrant/libs/copy.sh
 
 function _restartApache() {
   /etc/init.d/apache2 restart

@@ -3,8 +3,11 @@
 
 require 'json'
 
+# Read configuration from a .vagrant/manifest.json file
+manifest = JSON.parse(IO.read('.vagrant/manifest.json'), symbolize_names: true)
+
 # Read configuration from a vagrant.json file
-params = JSON.parse(IO.read('vagrant.json'), symbolize_names: true)
+userparam = JSON.parse(IO.read('vagrant.json'), symbolize_names: true)
 
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
@@ -15,13 +18,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # please see the online documentation at vagrantup.com.
 
   # see http://stackoverflow.com/a/20431791/715002
-  config.vm.define params[:name] do |machine|
+  config.vm.define userparam[:name] do |machine|
     # Every Vagrant virtual environment requires a box to build off of.
-    machine.vm.box = params[:box]
+    machine.vm.box = manifest[:box]
 
     # The url from where the 'config.vm.box' box will be fetched if it
     # doesn't already exist on the user's system.
-    machine.vm.box_url = params[:box_url]
+    machine.vm.box_url = manifest[:box_url]
 
     # Tell vagrant to run boostrap.sh in shell when provisioning
     machine.vm.provision :shell, :path => ".vagrant/bootstrap.sh"
@@ -29,12 +32,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # Bridged networking
     machine.vm.network :public_network
 
-    params[:forwarded_port].each do |port|
+    manifest[:forwarded_port].each do |port|
       config.vm.network "forwarded_port", guest: port[:guest], host: port[:host]
     end
 
     # Set machine hostname
-    machine.vm.hostname = params[:name]
+    machine.vm.hostname = manifest[:name]
 
     # If true, then any SSH connections made will enable agent forwarding.
     # Default value: false
@@ -54,14 +57,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
   config.vm.provider :virtualbox do |vb|
-    vb.name = params[:name]
+    vb.name = userparam[:name]
 
     # Don't boot with headless mode
-    vb.gui = params[:virtualbox][:gui]
+    vb.gui = manifest[:virtualbox][:gui]
 
     # Use VBoxManage to customize the VM. For example to change memory:
-    vb.customize ["modifyvm", :id, "--memory", params[:ram]]
-    vb.customize ["modifyvm", :id, "--cpus", params[:cpu]]
+    vb.customize ["modifyvm", :id, "--memory", manifest[:ram]]
+    vb.customize ["modifyvm", :id, "--cpus", manifest[:cpu]]
   end
 
 end

@@ -68,6 +68,9 @@ cp vagrantBootstrap-$branch/Vagrantfile $cwd/
 cp vagrantBootstrap-$branch/vagrant.tpl.json $cwd/vagrant.json
 cp -r vagrantBootstrap-$branch/.vagrant $cwd/
 
+echo "Adding to gitignore"
+cat vagrantBootstrap-$branch/.gitignore >> $cwd/.gitignore
+
 echo "Cleaning up"
 cd ..
 rm -r $src

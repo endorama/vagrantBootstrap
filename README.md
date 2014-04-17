@@ -22,6 +22,7 @@ Edit the vagrant.json file and run `vagrant up` when ready.
 Enjoy!
 
 PS: a database has been created for you :) The name of the database can be set from `vagrant.json`
+PPS: for further customization you have to edit the `.vagrant/manifest.json` file, in which are defined advanced options
 
 # Json parse from bash
 

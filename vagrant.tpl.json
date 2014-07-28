@@ -1,11 +1,12 @@
 {
   "name": "nodejs-oauth",
+  "database": {
+    "password": "root"
+  },
   "database-oauth": {
-    "password": "root",
     "name": "arduino_oauth"
   },
   "database-resource": {
-    "password": "root",
     "name": "arduino_resource"
   }
 }

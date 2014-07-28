@@ -1,0 +1,3 @@
+[submodule ".vagrant/libs"]
+	path = .vagrant/libs
+	url = git@github.com:endorama/vagrantBootstrap.git

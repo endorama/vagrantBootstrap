@@ -30,7 +30,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     machine.vm.provision :shell, :path => ".vagrant/bootstrap.sh"
 
     # Bridged networking
-    machine.vm.network :public_network
+    machine.vm.network :private_network, ip: manifest[:private_ip]
 
     manifest[:forwarded_port].each do |port|
       config.vm.network "forwarded_port", guest: port[:guest], host: port[:host]

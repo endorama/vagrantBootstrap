@@ -8,5 +8,6 @@
   "ram": 512,
   "virtualbox": {
     "gui": false
-  }
+  },
+  "private_ip": "10.0.0.3"
 }

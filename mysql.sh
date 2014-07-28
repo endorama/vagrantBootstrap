@@ -28,4 +28,7 @@ function configureMysqlWorkbench() {
 
   #Make MySQL accessible from remote software (i.e. MySQLWorkbench)
   sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mysql/my.cnf
+
+  #We need to restart DB because we have edited /etc/mysql/my.cnf file
+  /etc/init.d/mysql restart
 }

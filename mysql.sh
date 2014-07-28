@@ -21,3 +21,11 @@ function createDatabase() {
   
   mysql -u root -p$password -e "create database $name;"
 }
+
+function configureMysqlWorkbench() {
+  #Grant privileges to remote user to connect from remote MySQLWorkBench session
+  mysql -uroot -proot -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'10.0.2.2';"
+
+  #Make MySQL accessible from remote software (i.e. MySQLWorkbench)
+  sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mysql/my.cnf
+}

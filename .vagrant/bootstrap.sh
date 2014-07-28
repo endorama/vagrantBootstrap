@@ -16,12 +16,12 @@ copyBashFunctions
 
 # mysql
 configureMysql 
-configureMysqlWorkbench
 installMysql
 oauth_name=$(getConfig ".database_oauth.name")
 createDatabase $oauth_name
 resource_name=$(getConfig ".database_resource.name")
 createDatabase $resource_name
+configureMysqlWorkbench
 
 # nodejs
 installNodeJsBin

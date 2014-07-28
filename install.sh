@@ -71,7 +71,9 @@ echo "Copying files to $cwd"
 cp vagrantBootstrap/Vagrantfile $cwd/
 cp vagrantBootstrap/vagrant.tpl.json $cwd/vagrant.tpl.json
 cp vagrantBootstrap/vagrant.tpl.json $cwd/vagrant.json
+rm -r vagrantBootstrap/.vagrant/libs/.git # need to remove .git to delete submodule
 cp -r vagrantBootstrap/.vagrant $cwd/
+
 
 echo "Adding to gitignore"
 cat vagrantBootstrap/.gitignore >> $cwd/.gitignore

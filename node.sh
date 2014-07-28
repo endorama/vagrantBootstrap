@@ -16,6 +16,12 @@ function installNodeJs() {
   sudo dpkg -i node_*
 }
 
+# no need to install npm with this package
+function installNodeJsBin() {
+  dpkg -i /vagrant/.vagrant/pkgs/node_*.deb
+}
+
+# Usually bundled with Node
 function installNpm() {
   curl --insecure https://www.npmjs.org/install.sh | bash
 }

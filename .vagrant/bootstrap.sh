@@ -18,10 +18,10 @@ copyBashFunctions
 configureMysql 
 configureMysqlWorkbench
 installMysql
-local name=$(getConfig ".database_oauth.name")
-createDatabase $name
-local name=$(getConfig ".database_resource.name")
-createDatabase $name
+oauth_name=$(getConfig ".database_oauth.name")
+createDatabase $oauth_name
+resource_name=$(getConfig ".database_resource.name")
+createDatabase $resource_name
 
 # nodejs
 installNodeJsBin

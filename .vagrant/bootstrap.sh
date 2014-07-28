@@ -29,9 +29,20 @@ installNpmGlobalModules
 
 ### CUSTOM MACHINE SETTINGS ####################################################
 
-#Create required db tables using NodeJS
-node /vagrant/oauth-server/database/create_db.js cortana
-node /vagrant/resource-server/database/create_db.js cortana
+#Create required db tables
+oauth_db_name=$(getConfig '.database_oauth.name')
+oauth_db_passwd=$(getConfig '.database.password')
+for i in $(ls oauth-server/database/sql); do
+  echo "Dumping $i into $oauth_db_name"
+  mysql -u root -p$oauth_db_passwd $oauth_db_name < oauth-server/database/sql/$i
+done
+
+oauth_db_name=$(getConfig '.database_resource.name')
+oauth_db_passwd=$(getConfig '.database.password')
+for i in $(ls resource-server/database/sql); do
+  echo "Dumping $i into $oauth_db_name"
+  mysql -u root -p$oauth_db_passwd $oauth_db_name < resource-server/database/sql/$i
+done
 
 #Install required NodeJS modules
 cd /vagrant/oauth-server && npm install

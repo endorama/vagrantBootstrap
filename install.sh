@@ -55,8 +55,10 @@ fi
 # done
 
 cwd=$(pwd)
-src=$(mktemp -d)
+src='tmp'
 branch=$1
+
+mkdir $src
 
 echo "Downloading $branch into $src..."
 cd $src

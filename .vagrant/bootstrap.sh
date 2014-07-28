@@ -4,38 +4,35 @@ vagrant_root="/vagrant/.vagrant"
 
 source $vagrant_root/libs/config.sh
 
-source $vagrant_root/libs/apache.sh
 source $vagrant_root/libs/apt.sh
 source $vagrant_root/libs/bashrc.sh
-source $vagrant_root/libs/file.sh
 source $vagrant_root/libs/mysql.sh
 source $vagrant_root/libs/node.sh
-source $vagrant_root/libs/php.sh
 
 aptgetupdate
-aptgetinstall git
 
 copyBashRc
 copyBashFunctions
 
-# apache
-installApache
-configureVhost
-webAppRoot
-
-# php5
-installPhp5
-installPhp5Mysql
-installComposer
-
 # mysql
-configureMysql
+configureMysql 
+configureMysqlWorkbench
 installMysql
-createDatabase
+local name=$(getConfig ".database_oauth.name")
+createDatabase $name
+local name=$(getConfig ".database_resource.name")
+createDatabase $name
 
 # nodejs
-installNodeJs
+installNodeJsBin
 installNpmGlobalModules
 
-# laravel
-installLaravelDependencies
+### CUSTOM MACHINE SETTINGS ####################################################
+
+#Create required db tables using NodeJS
+node /vagrant/oauth-server/database/create_db.js cortana
+node /vagrant/resource-server/database/create_db.js cortana
+
+#Install required NodeJS modules
+cd /vagrant/oauth-server && npm install
+cd /vagrant/resource-server && npm install

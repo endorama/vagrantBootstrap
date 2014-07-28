@@ -3,10 +3,10 @@
   "database": {
     "password": "root"
   },
-  "database-oauth": {
+  "database_oauth": {
     "name": "arduino_oauth"
   },
-  "database-resource": {
+  "database_resource": {
     "name": "arduino_resource"
   }
 }

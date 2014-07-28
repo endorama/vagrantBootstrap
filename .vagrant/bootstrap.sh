@@ -32,14 +32,14 @@ installNpmGlobalModules
 #Create required db tables
 oauth_db_name=$(getConfig '.database_oauth.name')
 oauth_db_passwd=$(getConfig '.database.password')
-for i in $(ls oauth-server/database/sql); do
+for i in $(ls /vagrant/oauth-server/database/sql); do
   echo "Dumping $i into $oauth_db_name"
   mysql -u root -p$oauth_db_passwd $oauth_db_name < oauth-server/database/sql/$i
 done
 
 oauth_db_name=$(getConfig '.database_resource.name')
 oauth_db_passwd=$(getConfig '.database.password')
-for i in $(ls resource-server/database/sql); do
+for i in $(ls /vagrant/resource-server/database/sql); do
   echo "Dumping $i into $oauth_db_name"
   mysql -u root -p$oauth_db_passwd $oauth_db_name < resource-server/database/sql/$i
 done

@@ -1,5 +1,5 @@
 {
-  "box": "debian-7.4",
+  "box": "chef/debian-7.4",
   "box_url": "https://vagrantcloud.com/chef/debian-7.4/version/1/provider/virtualbox.box",
   "cpu": 1,
   "forwarded_port": [

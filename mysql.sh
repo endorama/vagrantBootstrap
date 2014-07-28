@@ -16,8 +16,8 @@ function installMysql() {
 }
 
 function createDatabase() {
+  local name=$1
   local password=$(getConfig ".database.password")
-  local name=$(getConfig ".database.name")
-
+  
   mysql -u root -p$password -e "create database $name;"
 }

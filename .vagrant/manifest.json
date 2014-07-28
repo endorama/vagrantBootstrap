@@ -3,7 +3,7 @@
   "box_url": "https://vagrantcloud.com/chef/debian-7.4/version/1/provider/virtualbox.box",
   "cpu": 1,
   "forwarded_port": [
-    { "name": "livereload", "guest": 35729, "host": 35729 }
+    { "name": "mysql", "guest": 3306, "host": 3306 }
   ],
   "ram": 512,
   "virtualbox": {

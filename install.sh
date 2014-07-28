@@ -6,6 +6,9 @@ VERSION="0.0.1"
 # http://stackoverflow.com/a/3182519/715002
 USAGE="Usage: $APPLICATION [-hv] branch
 
+  Setup a specific vagrantBootstrap branch in the current folder.
+  NB: You need git installed on you machine for this to work.
+
   Arguments:
     branch        The vagrantBootstrap repository branch to download
 
@@ -62,16 +65,15 @@ mkdir $src
 
 echo "Downloading $branch into $src..."
 cd $src
-wget https://github.com/endorama/vagrantBootstrap/archive/$branch.zip -O vagrantBootstrap.zip -q
-unzip vagrantBootstrap.zip > /dev/null
+git clone --recursive -b $branch https://github.com/endorama/vagrantBootstrap
 
 echo "Copying files to $cwd"
-cp vagrantBootstrap-$branch/Vagrantfile $cwd/
-cp vagrantBootstrap-$branch/vagrant.tpl.json $cwd/vagrant.json
-cp -r vagrantBootstrap-$branch/.vagrant $cwd/
+cp vagrantBootstrap/Vagrantfile $cwd/
+cp vagrantBootstrap/vagrant.tpl.json $cwd/vagrant.json
+cp -r vagrantBootstrap/.vagrant $cwd/
 
 echo "Adding to gitignore"
-cat vagrantBootstrap-$branch/.gitignore >> $cwd/.gitignore
+cat vagrantBootstrap/.gitignore >> $cwd/.gitignore
 
 echo "Cleaning up"
 cd ..

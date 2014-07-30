@@ -11,7 +11,7 @@ Now simply run the `install.sh` script in the desired folder; will copy the
 Vagrantfile, vagrant.json ( copy of vagrant.tpl.json ) and .vagrant folder.
 
 ```
-$ curl -sSL https://raw.githubusercontent.com/endorama/vagrantBootstrap/oauth/install.sh | bash -s oauth
+$ curl -sSL https://raw.githubusercontent.com/endorama/vagrantBootstrap/nodejs/install.sh | bash -s nodejs
 ```
 
 Edit the vagrant.json file and run `vagrant up` when ready.

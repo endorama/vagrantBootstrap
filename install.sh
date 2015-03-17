@@ -68,15 +68,15 @@ cd $src
 git clone --recursive -b $branch https://github.com/endorama/vagrantBootstrap
 
 echo "Copying files to $cwd"
-cp vagrantBootstrap/Vagrantfile $cwd/
-cp vagrantBootstrap/vagrant.tpl.json $cwd/vagrant.tpl.json
-cp vagrantBootstrap/vagrant.tpl.json $cwd/vagrant.json
+cp vagrantBootstrap/Vagrantfile "$cwd/"
+cp vagrantBootstrap/vagrant.tpl.json "$cwd/vagrant.tpl.json"
+cp vagrantBootstrap/vagrant.tpl.json "$cwd/vagrant.json"
 rm -r vagrantBootstrap/.vagrant/libs/.git # need to remove .git to delete submodule
-cp -r vagrantBootstrap/.vagrant $cwd/
+cp -r vagrantBootstrap/.vagrant "$cwd/"
 
 
 echo "Adding to gitignore"
-cat vagrantBootstrap/.gitignore >> $cwd/.gitignore
+cat vagrantBootstrap/.gitignore >> "$cwd/.gitignore"
 
 echo "Cleaning up"
 cd ..
